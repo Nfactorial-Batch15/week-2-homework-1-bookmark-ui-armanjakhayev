@@ -11,7 +11,8 @@ import SwiftUI
 struct HW4App: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            WelcomeScreen()
+
         }
     }
 }
