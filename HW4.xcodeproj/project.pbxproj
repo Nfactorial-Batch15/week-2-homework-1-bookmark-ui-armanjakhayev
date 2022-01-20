@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C2A17797277B9947000CDBEF /* LinkModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2A17796277B9947000CDBEF /* LinkModel.swift */; };
+		C2A17799277C2BF0000CDBEF /* MyStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2A17798277C2BF0000CDBEF /* MyStorage.swift */; };
 		C2A6C893276030F700AC789F /* HW4App.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2A6C892276030F700AC789F /* HW4App.swift */; };
 		C2A6C895276030F700AC789F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2A6C894276030F700AC789F /* ContentView.swift */; };
 		C2A6C897276030FC00AC789F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C2A6C896276030FC00AC789F /* Assets.xcassets */; };
@@ -14,10 +16,12 @@
 		C2A6C8A12760314600AC789F /* WelcomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2A6C8A02760314600AC789F /* WelcomeScreen.swift */; };
 		C2A6C8A52760446500AC789F /* Page1.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2A6C8A42760446500AC789F /* Page1.swift */; };
 		C2A6C8A727605A1500AC789F /* Page2.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2A6C8A627605A1500AC789F /* Page2.swift */; };
-		C2A6C8A9276091A700AC789F /* Page3.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2A6C8A8276091A700AC789F /* Page3.swift */; };
+		C2D6852227745D6F00310ED6 /* MyData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D6852127745D6F00310ED6 /* MyData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C2A17796277B9947000CDBEF /* LinkModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkModel.swift; sourceTree = "<group>"; };
+		C2A17798277C2BF0000CDBEF /* MyStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyStorage.swift; sourceTree = "<group>"; };
 		C2A6C88F276030F700AC789F /* HW4.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HW4.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C2A6C892276030F700AC789F /* HW4App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HW4App.swift; sourceTree = "<group>"; };
 		C2A6C894276030F700AC789F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -26,7 +30,7 @@
 		C2A6C8A02760314600AC789F /* WelcomeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeScreen.swift; sourceTree = "<group>"; };
 		C2A6C8A42760446500AC789F /* Page1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Page1.swift; sourceTree = "<group>"; };
 		C2A6C8A627605A1500AC789F /* Page2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Page2.swift; sourceTree = "<group>"; };
-		C2A6C8A8276091A700AC789F /* Page3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Page3.swift; sourceTree = "<group>"; };
+		C2D6852127745D6F00310ED6 /* MyData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,9 +68,11 @@
 				C2A6C8A02760314600AC789F /* WelcomeScreen.swift */,
 				C2A6C8A42760446500AC789F /* Page1.swift */,
 				C2A6C8A627605A1500AC789F /* Page2.swift */,
-				C2A6C8A8276091A700AC789F /* Page3.swift */,
+				C2A17796277B9947000CDBEF /* LinkModel.swift */,
+				C2A17798277C2BF0000CDBEF /* MyStorage.swift */,
 				C2A6C896276030FC00AC789F /* Assets.xcassets */,
 				C2A6C898276030FC00AC789F /* Preview Content */,
+				C2D6852127745D6F00310ED6 /* MyData.swift */,
 			);
 			path = HW4;
 			sourceTree = "<group>";
@@ -149,12 +155,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C2A17797277B9947000CDBEF /* LinkModel.swift in Sources */,
 				C2A6C8A52760446500AC789F /* Page1.swift in Sources */,
+				C2A17799277C2BF0000CDBEF /* MyStorage.swift in Sources */,
 				C2A6C8A12760314600AC789F /* WelcomeScreen.swift in Sources */,
-				C2A6C8A9276091A700AC789F /* Page3.swift in Sources */,
 				C2A6C895276030F700AC789F /* ContentView.swift in Sources */,
 				C2A6C893276030F700AC789F /* HW4App.swift in Sources */,
 				C2A6C8A727605A1500AC789F /* Page2.swift in Sources */,
+				C2D6852227745D6F00310ED6 /* MyData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

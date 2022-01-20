@@ -3,96 +3,124 @@
 //  HW4
 //
 //  Created by Arman on 12/7/21.
-//
+//.con
 
 import SwiftUI
 
 struct Page2: View {
+    @Binding var isShowing: Bool
+    @Binding var linkModels: [LinkModel]
+
     var body: some View {
         ZStack(alignment: .bottom){
-            Page1()
-                .opacity(0.2)
-                .background(.gray)
-            VStack {
-                Spacer()
-                Rectangle()
-                    .frame(height: 360)
+            if isShowing{
+                Color.black
+                    .opacity(0.3)
+                    .ignoresSafeArea()
+                    .onTapGesture {
+                        isShowing = false
+                    }
+                VStack{
+                    Spacer()
+                    SaveSheet(linkModels: $linkModels, showSaveSheet: $isShowing, isShowing: $isShowing)
+                }
+                .transition(.move(edge: .bottom))
+                .ignoresSafeArea()
+                .animation(.easeInOut)
             }
-            Spacer()
-            SaveWindow()
-            .padding(.top, 440)
         }
+        .gesture(DragGesture(minimumDistance: 30, coordinateSpace: .local).onEnded({ value in
+            if value.translation.height > 0 && value.translation.width < 100 && value.translation.width > -100 {
+                isShowing = false
+            }
+        }))
     }
 }
 
-struct SaveWindow: View {
+struct SaveSheet: View {
+    @Binding var linkModels: [LinkModel]
+    @Binding var showSaveSheet: Bool
+    @Binding var isShowing: Bool
+    @State var title: String = ""
+    @State var link: String = ""
+    @State var textFieldOffSet = 0.0
+    @State var textIntextField = ""
+    
     var body: some View {
         ZStack{
             RoundedRectangle(cornerRadius: 20)
-            .fill(Color.white)
-            .frame(width: 390, height: 362)
-            VStack {
-                    HStack{
-                        Spacer()
+                .fill(Color.white)
+                .frame(height: 362)
+            VStack(spacing:0){
+                HStack(spacing:0){
+                    Spacer()
                         Image(systemName: "xmark")
                             .frame(width: 12, height: 12)
-                            .padding(.horizontal,22)
-                    }
-                    HStack{
-                        Text("Title")
-                            .font(.system(size: 17))
-                            .padding(.bottom,12)
-                            .padding(.horizontal,16)
-                        Spacer()
-                    }
-                        TextField("Bookmark title", text: .constant(""))
-                            .frame(width: 326, height: 46, alignment: .center)
-                            .font(.system(size: 17))
-                            .padding(.horizontal,16)
-                            .background(.gray)
-                            .opacity(0.4)
-                            .cornerRadius(12)
-                    HStack{
-                        Text("Link")
-                            .font(.system(size: 17))
-                            .padding(.top,16)
-                            .padding(.horizontal,16)
-                        Spacer()
-                    }
-                    TextField("Bookmark link (URL)", text: .constant(""))
-                    .frame(width: 326, height: 46, alignment: .center)
+                            .padding(.leading ,6)
+                            .onTapGesture {
+                                isShowing = false
+                            }
+                }
+                HStack(spacing:0){
+                    Text("Title")
+                        .font(.system(size: 17))
+                        .padding(.top,22)
+                    Spacer()
+                }
+                TextField("Bookmark title", text: $title)
+                    .frame(height: 46)
                     .font(.system(size: 17))
-                    .padding(.horizontal,16)
-                    .background(.gray)
-                    .opacity(0.4)
+                    .padding(.horizontal)
+                    .background(Color("MyGray"))
                     .cornerRadius(12)
-                        .padding(.bottom,11)
-                SaveButton()
+                    .padding(.top, 12)
+                    .onTapGesture {
+                        if textIntextField == "" {
+                        textFieldOffSet = -340.0
+                        }
+                    }
+                HStack(spacing:0){
+                    Text("Link")
+                        .font(.system(size: 17))
+                        .padding(.top)
+                    Spacer()
+                }
+                TextField("Bookmark link (URL)", text: $link)
+                    .autocapitalization(.none)
+                    .frame(height: 46)
+                    .font(.system(size: 17))
+                    .padding(.horizontal)
+                    .background(Color("MyGray"))
+                    .cornerRadius(12)
+                    .padding(.top, 12)
+                    .onTapGesture {
+                        if textIntextField == "" {
+                        textFieldOffSet = -340.0
+                        }
+                    }
+                Button(action: {
+                    saveLink(title: title, link: link)
+                    isShowing = false
+                }){
+                    ZStack {
+                        RoundedRectangle(cornerRadius: 16)
+                            .fill(Color.black)
+                        Text("Save")
+                            .font(.system(size: 16))
+                            .foregroundColor(.white)
+                            .fontWeight(.semibold)
+                    }.frame(height: 58)
+                }
                     .padding(.top, 24)
             }
-        }
+            .frame(height: 362)
+            .padding(.horizontal)
+            .edgesIgnoringSafeArea(.all)
+        }.offset(y: textFieldOffSet)
+    }
+    func saveLink(title: String, link: String){
+        let linkModel = LinkModel(title: title, linkURL: link)
+        linkModels.append(linkModel)
+        Storage.linkModels.append(linkModel)
     }
 }
-
-struct SaveButton: View {
-    var body: some View {
-        Button(action: {}){
-        ZStack {
-            RoundedRectangle(cornerRadius: 16)
-            .fill(Color.black)
-            Text("Save")
-            .font(.system(size: 16))
-            .foregroundColor(.white)
-            .fontWeight(.semibold)
-            .frame(width: 310, height: 22)
-        }.frame(width: 358, height: 58)
-    }
-    }
-}
-
-struct Page2_Previews: PreviewProvider {
-    static var previews: some View {
-        Page2()
-    }
-}
-
